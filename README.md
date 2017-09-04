@@ -15,9 +15,8 @@ concepts:
 
   - composable components,
   - a single store,
-  - a dispatch function,
+  - a `dispatch` function,
   - reducers,
-  - selectors,
   - and even a logging midldeware!
 
 It does all of this by serializing your component tree to a string and
