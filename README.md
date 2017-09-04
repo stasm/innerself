@@ -23,12 +23,13 @@ concepts:
 
 It does all of this by serializing your component tree to a string and
 assigning it to `innerHTML` of a root element.  I know this sounds like I'm
-crazy, but it actually works quite nice for small and simple UIs.
+crazy but it actually works quite nice for small and simple UIs.
 
-If you don't care about size contraints, do yourself a favor and use a real
-framework.  `innerself` is not meant as a competitor for React, preact, Vue.js,
-Angular etc.  These are fantastic tools which don't sacrifice code clarity and
-ease of use for bytes.
+If you don't care about size constraints, `innerself` might not be for you.
+Real frameworks like React have much more to offer, don't sacrifice ease of use
+nor performance, and you probably won't notice their size footprint.
+
+`innerself` was a fun weekend project for me.  Let me know what you think!
 
 [1]: https://www.quirksmode.org/dom/innerhtml.html
 [2]: http://js13kgames.com/
@@ -134,9 +135,9 @@ export default function reducer(state = init, action, args) {
 If you need side-effects, you have three choices:
 
   - Put them right in the `on<event>` attributes.
-  - Expose global action crteators.
+  - Expose global action creators.
   - Put them in the reducer.  (This is considered a bad practice in Redux
-    because it makes the reduces unpredictable and harder to test.)
+    because it makes the reducer unpredictable and harder to test.)
 
 The `dispatch` function will also re-render the entire top-level component.  In
 order to be able to do so, it needs to know where in the DOM to put the
@@ -212,7 +213,7 @@ I know, I know.  But it works!  Check out the example in `example01`.
 changes to the console.  To use it, simply decorate your reducer with the
 default export of the `innerself/logger` module:
 
-```javsacript
+```javascript
 import { create_store } from "innerself";
 import with_logger from "innerself/logger";
 import reducer from "./reducer"
