@@ -66,6 +66,7 @@ function to `create_store`:
 ```javascript
 const { attach, connect, dispatch } = create_store(reducer);
 window.dispatch = dispatch;
+export { attach, connect };
 ```
 
 You need to make `dispatch` available globally in one way or another.  You can
