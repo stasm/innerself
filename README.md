@@ -8,7 +8,9 @@ just fast enough for you if you care about code size.
 
 I wrote `innerself` because I needed to make sense of the UI for a game I wrote
 for the [js13kGames][1] jam.  The whole game had to fit into 13KB.  I needed
-something extremely small which would not make me lose sanity.
+something extremely small which would not make me lose sanity.  `innerself`
+clocks in at under 30 lines of code.  That's around 400 bytes minified, ~250
+gzipped.
 
 `innerself` is inspired by React and Redux.  It offers the following familiar
 concepts:
@@ -17,7 +19,7 @@ concepts:
   - a single store,
   - a `dispatch` function,
   - reducers,
-  - and even a logging midldeware!
+  - and even an optional logging middleware for debugging!
 
 It does all of this by serializing your component tree to a string and
 assigning it to `innerHTML` of a root element.  I know this sounds like I'm
@@ -202,3 +204,19 @@ and then any other arguments passed explicitly by the parent.
 ## Crazy, huh?
 
 I know, I know.  But it works!  Check out the example in `example01`.
+
+
+## Logging Middleware
+
+`innerself` comes with an optional helper middleware which prints state
+changes to the console.  To use it, simply decorate your reducer with the
+default export of the `innerself/logger` module:
+
+```javsacript
+import { create_store } from "innerself";
+import with_logger from "innerself/logger";
+import reducer from "./reducer"
+
+const { attach, connect, dispatch } =
+    create_store(with_logger(reducer));
+```

@@ -36,13 +36,3 @@ export function create_store(reducer) {
 
     return {attach, connect, dispatch};
 }
-
-export function logger(reducer) {
-    return function(prev_state, action, args) {
-        console.log("Previous state", prev_state);
-        console.log("Action", action, args);
-        const next_state = reducer(prev_state, action, args);
-        console.log("Next state", next_state);
-        return next_state;
-    }
-}
