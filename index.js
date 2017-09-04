@@ -1,0 +1,50 @@
+export default function html([first, ...strings], ...values) {
+    // Weave the literal strings and the interpolations.
+    // We don't have to explicitly handle array-typed values
+    // because concat will spread them flat for us.
+    return values.reduce(
+        (acc, cur) => acc.concat(cur, strings.shift()),
+        [first]
+    ).join("");
+}
+
+export function create_store(reducer) {
+    let state = reducer();
+    const roots = new Map();
+
+    function dispatch(action, ...args) {
+        state = reducer(state, action, args);
+        render();
+    }
+
+    function connect(select) {
+        return function(component) {
+            return function(...args) {
+                return component(select(state), ...args);
+            }
+        }
+    }
+
+    function render() {
+        for (const [root, component] of roots) {
+            root.innerHTML = component();
+        }
+    }
+
+    function attach(component, root) {
+        roots.set(root, component);
+        render();
+    }
+
+    return {attach, connect, dispatch};
+}
+
+export function logger(reducer) {
+    return function(prev_state, action, args) {
+        console.log("Previous state", prev_state);
+        console.log("Action", action, args);
+        const next_state = reducer(prev_state, action, args);
+        console.log("Next state", next_state);
+        return next_state;
+    }
+}

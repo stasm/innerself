@@ -1,0 +1,16 @@
+{
+  "name": "innerself",
+  "version": "0.0.1",
+  "description": "A tiny view + state management solution using innerHTML",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stasm/innerself.git"
+  },
+  "author": "Staś Małolepszy <stas@duzodobrze.pl>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stasm/innerself/issues"
+  },
+  "homepage": "https://github.com/stasm/innerself#readme"
+}
