@@ -86,6 +86,13 @@ export default function ActiveTask(text, index) {
 }
 ```
 
+You can put any JavaScript into the `on<event>` attributes. [The browser will
+wrap it in a function][3] which takes the `event` as the first argument (in
+most cases) and in which `this` refers to the DOM Element on which the event
+has been registered.
+
+[3]:https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers#Event_handler's_parameters_this_binding_and_the_return_value
+
 The `dispatch` function takes an action name and a variable number of
 arguments.  They are passed to the reducer which should return a new version of
 the state.
