@@ -17,11 +17,9 @@ export function create_store(reducer) {
         render();
     }
 
-    function connect(select) {
-        return function(component) {
-            return function(...args) {
-                return component(select(state), ...args);
-            }
+    function connect(component) {
+        return function(...args) {
+            return component(state, ...args);
         }
     }
 

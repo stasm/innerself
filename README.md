@@ -150,12 +150,13 @@ passed by the top-level component.
 Instead you can do this:
 
 ```javascript
-import html from "../index";
+import html from "innerself";
 import { connect } from "./store";
 import ActiveTask from "./ActiveTask";
 import TaskInput from "./TaskInput";
 
-function ActiveList(tasks) {
+function ActiveList(state) {
+    const { tasks } = state;
     return html`
         <h2>My Active Tasks</h2>
         <ul>
@@ -167,16 +168,14 @@ function ActiveList(tasks) {
     `;
 }
 
-// connect() takes a selector function; its result will be passed
-// as the first argument to the wrapped component.
-export default connect(state => state.tasks)(ActiveList);
+export default connect(ActiveList);
 ```
 
 You can then avoid passing the state explicitly in the top-level component:
 
 ```javascript
 
-import html from "../index";
+import html from "innerself";
 import { connect } from "./store";
 
 import ActiveList from "./ActiveList";
@@ -190,8 +189,8 @@ export default function App(tasks) {
 }
 ```
 
-Connected components always receive the return value of the selector as their
-first argument, and then any other arguments passed explicitly by the parent.
+Connected components always receive the current state as their first argument,
+and then any other arguments passed explicitly by the parent.
 
 
 ## Crazy, huh?

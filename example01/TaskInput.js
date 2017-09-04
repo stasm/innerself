@@ -1,7 +1,6 @@
 import html from "../index";
-import { connect } from "./store";
 
-function TaskInput(value) {
+export default function TaskInput() {
     // XXX This is quite horrible.  We can't dispatch in onkeyup because the
     // input would lose focus due to re-rendering.  And we can't dispatch in
     // onchange/onblur because the most likely user action triggering those
@@ -12,9 +11,7 @@ function TaskInput(value) {
             document.querySelector('input').value)
     `;
     return html`
-        <input type="text" value="${value}">
+        <input type="text" placeholder="Type here…">
         <button onclick="${onclick}">Add</button>
     `;
 }
-
-export default connect(state => state.input_value)(TaskInput);

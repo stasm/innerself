@@ -3,7 +3,8 @@ import { connect } from "./store";
 import ActiveTask from "./ActiveTask";
 import TaskInput from "./TaskInput";
 
-function ActiveList(tasks) {
+function ActiveList(state) {
+    const { tasks } = state;
     return html`
         <h2>My Active Tasks</h2>
         <ul>
@@ -15,4 +16,4 @@ function ActiveList(tasks) {
     `;
 }
 
-export default connect(state => state.tasks)(ActiveList);
+export default connect(ActiveList);
