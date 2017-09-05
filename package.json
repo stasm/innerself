@@ -12,5 +12,11 @@
   "bugs": {
     "url": "https://github.com/stasm/innerself/issues"
   },
-  "homepage": "https://github.com/stasm/innerself#readme"
+  "scripts": {
+    "deploy": "gh-pages -d ."
+  },
+  "homepage": "https://github.com/stasm/innerself#readme",
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
+  }
 }
