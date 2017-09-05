@@ -40,6 +40,22 @@ nor performance, and you probably won't notice their size footprint.
     $ npm install innerself
 
 
+## Caveats
+
+You need to know a few things before you jump right in.  `innerself` is a poor
+choice for form-heavy UIs.  Every re-render is essentially a new assignment to
+the root element's `innerHTML`.  If you try to dispatch actions on `keyup` or
+`onchange` events, your form elements will lose focus.
+
+When dealing with user input in serious scenarios, any use of `innerHTML`
+requires sanitization.  `innerself` doesn't do anything to protect you or your
+users from XSS attacks.  If you allow keyboard input or display data fetched
+from a database, please take special care to secure your app.
+
+Perhaps the best use-case for `innerself` are simple mouse-only UIs with no
+keyboard input at all :)
+
+
 ## Usage
 
 `innerself` expects you to build a serialized version of your DOM which will
