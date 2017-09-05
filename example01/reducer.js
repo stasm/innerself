@@ -1,4 +1,5 @@
 const init = {
+    input_value: "",
     tasks: [],
     archive: []
 };
@@ -9,11 +10,17 @@ function merge(...objs) {
 
 export default function reducer(state = init, action, args) {
     switch (action) {
-        case "ADD_TASK": {
-            const {tasks} = state;
-            const [value] = args;
+        case "CHANGE_INPUT": {
+            const [input_value] = args;
             return merge(state, {
-                tasks: [...tasks, value],
+                input_value
+            });
+        }
+        case "ADD_TASK": {
+            const {tasks, input_value} = state;
+            return merge(state, {
+                tasks: [...tasks, input_value],
+                input_value: ""
             });
         }
         case "COMPLETE_TASK": {

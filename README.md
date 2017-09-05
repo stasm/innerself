@@ -9,7 +9,7 @@ just fast enough for you if you care about code size.
 I wrote `innerself` because I needed to make sense of the UI for a game I wrote
 for the [js13kGames][1] jam.  The whole game had to fit into 13KB.  I needed
 something extremely small which would not make me lose sanity.  `innerself`
-clocks in at under 30 lines of code.  That's around 400 bytes minified, ~250
+clocks in at under 40 lines of code.  That's around 400 bytes minified, ~250
 gzipped.
 
 `innerself` is inspired by React and Redux.  It offers the following familiar
@@ -43,9 +43,10 @@ nor performance, and you probably won't notice their size footprint.
 ## Caveats
 
 You need to know a few things before you jump right in.  `innerself` is a poor
-choice for form-heavy UIs.  Every re-render is essentially a new assignment to
-the root element's `innerHTML`.  If you try to dispatch actions on `keyup` or
-`onchange` events, your form elements will lose focus.
+choice for form-heavy UIs.  It tries to avoid unnecesary re-renders, but they
+still happen if the DOM needs even a tiniest update.  Your form elements will
+keep losing focus because every re-render is essentially a new assignment to
+the root element's `innerHTML`.
 
 When dealing with user input in serious scenarios, any use of `innerHTML`
 requires sanitization.  `innerself` doesn't do anything to protect you or your

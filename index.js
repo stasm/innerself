@@ -11,6 +11,7 @@ export default function html([first, ...strings], ...values) {
 export function create_store(reducer) {
     let state = reducer();
     const roots = new Map();
+    const prevs = new Map();
 
     function dispatch(action, ...args) {
         state = reducer(state, action, args);
@@ -25,7 +26,16 @@ export function create_store(reducer) {
 
     function render() {
         for (const [root, component] of roots) {
-            root.innerHTML = component();
+            const output = component();
+
+            // Poor man's Virtual DOM implementation :)  Compare the new output
+            // with the last output for this root.  Don't trust the current
+            // value of root.innerHTML as it may have been changed by other
+            // scripts or extensions.
+            if (output !== prevs.get(root)) {
+                prevs.set(root, output);
+                root.innerHTML = output;
+            }
         }
     }
 
