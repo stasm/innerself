@@ -13,17 +13,6 @@ export function create_store(reducer) {
     const roots = new Map();
     const prevs = new Map();
 
-    function dispatch(action, ...args) {
-        state = reducer(state, action, args);
-        render();
-    }
-
-    function connect(component) {
-        return function(...args) {
-            return component(state, ...args);
-        }
-    }
-
     function render() {
         for (const [root, component] of roots) {
             const output = component();
@@ -37,12 +26,20 @@ export function create_store(reducer) {
                 root.innerHTML = output;
             }
         }
-    }
+    };
 
-    function attach(component, root) {
+    return {
+      attach(component, root) {
         roots.set(root, component);
         render();
-    }
-
-    return {attach, connect, dispatch};
+      },
+      connect(component) {
+          // Return a decorated component function.
+          return (...args) => component(state, ...args);
+      },
+      dispatch(action, ...args) {
+        state = reducer(state, action, args);
+        render();
+      },
+    };
 }
