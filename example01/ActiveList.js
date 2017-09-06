@@ -1,4 +1,4 @@
-import html from "../index";
+import html from "../dist/innerself.js";
 import { connect } from "./store";
 import ActiveTask from "./ActiveTask";
 import TaskInput from "./TaskInput";

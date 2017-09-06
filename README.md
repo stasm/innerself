@@ -228,13 +228,12 @@ I know, I know.  But it works!  Check out the example in `example01`.
 
 `innerself` comes with an optional helper middleware which prints state
 changes to the console.  To use it, simply decorate your reducer with the
-default export of the `innerself/logger` module:
+logger export of the `innerself` module:
 
 ```javascript
-import { create_store } from "innerself";
-import with_logger from "innerself/logger";
+import { create_store, logger } from "innerself";
 import reducer from "./reducer"
 
 const { attach, connect, dispatch } =
-    create_store(with_logger(reducer));
+    create_store(logger(reducer));
 ```

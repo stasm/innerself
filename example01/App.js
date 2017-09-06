@@ -1,4 +1,4 @@
-import html from "../index";
+import html from "../dist/innerself.js";
 import { connect } from "./store";
 
 import ActiveList from "./ActiveList";
@@ -8,5 +8,6 @@ export default function App(tasks) {
     return html`
         ${ActiveList()}
         ${ArchivedList()}
+        <script></script>
     `;
 }

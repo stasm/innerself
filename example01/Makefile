@@ -10,12 +10,13 @@ build:
 	@rollup index.js \
 		--output.format es \
 		--output.file dist.js
-
+		--external striptags
 watch:
 	@rollup index.js \
 		--watch \
 		--output.format es \
 		--output.file dist.js
+		--external striptags
 
 serve:
 	@serve .

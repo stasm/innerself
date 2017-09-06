@@ -1,10 +1,8 @@
-import { create_store } from "../index";
-import with_logger from "../logger";
+import { create_store, logger } from "../dist/innerself.js";
 import reducer from "./reducer"
 
-
 const { attach, connect, dispatch } =
-    create_store(with_logger(reducer));
+    create_store(logger(reducer));
 
 window.dispatch = dispatch;
 

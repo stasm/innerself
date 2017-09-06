@@ -1,4 +1,4 @@
-import html from "../index";
+import html from "../dist/innerself.js";
 
 export default function TaskInput() {
     // XXX This is quite horrible.  We can't dispatch in onkeyup because the

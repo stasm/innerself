@@ -1,11 +1,18 @@
+import sanitize from './filter';
+
 export default function html([first, ...strings], ...values) {
     // Weave the literal strings and the interpolations.
     // We don't have to explicitly handle array-typed values
     // because concat will spread them flat for us.
-    return values.reduce(
-        (acc, cur) => acc.concat(cur, strings.shift()),
-        [first]
-    ).join("");
+
+    let renderPre = values.reduce(
+        (acc, cur) => {
+            return acc.concat(cur, strings.shift())
+        }, [first]
+
+    ).join(''); // sanitize
+
+    return sanitize(renderPre);
 }
 
 export function create_store(reducer) {
@@ -35,4 +42,16 @@ export function create_store(reducer) {
     }
 
     return {attach, connect, dispatch};
+}
+
+export function logger(reducer) {
+    return function(prev_state, action, args) {
+        console.group(action);
+        console.log("Previous State", prev_state);
+        console.log("Action Arguments", args);
+        const next_state = reducer(prev_state, action, args);
+        console.log("Next State", next_state);
+        console.groupEnd();
+        return next_state;
+    }
 }

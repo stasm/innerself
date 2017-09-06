@@ -1,4 +1,4 @@
-import html from "../index";
+import html from "../dist/innerself.js";
 
 export default function ActiveTask(text, index) {
     return html`
