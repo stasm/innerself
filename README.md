@@ -7,7 +7,7 @@ or even if your app has more than just a handful of views.  But it might be
 just fast enough for you if you care about code size.
 
 I wrote `innerself` because I needed to make sense of the UI for a game I wrote
-for the [js13kGames][1] jam.  The whole game had to fit into 13KB.  I needed
+for the [js13kGames][2] jam.  The whole game had to fit into 13KB.  I needed
 something extremely small which would not make me lose sanity.  `innerself`
 clocks in at under 40 lines of code.  That's around 400 bytes minified, ~250
 gzipped.
