@@ -11,8 +11,8 @@ export default function sanitize(string, options){
 
     options = typeof options === "object" ? options : {};
 
-    let FILTER = Array.isArray(options.filter) ?
-        options.filter :
+    let FILTER = Array.isArray(options.custom) ?
+        options.custom :
         ALLOWED_TAGS.concat(
             Array.isArray(options.add) ?
                 options.add :
