@@ -1,15 +1,15 @@
 # innerself
 
-A tiny view + state management solution using innerHTML.
+A tiny view + state management solution using innerHTML.  [Live demo][].
 
 [innerHTML is fast][1].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
 just fast enough for you if you care about code size.
 
 I wrote `innerself` because I needed to make sense of the UI for a game I wrote
-for the [js13kGames][1] jam.  The whole game had to fit into 13KB.  I needed
+for the [js13kGames][2] jam.  The whole game had to fit into 13KB.  I needed
 something extremely small which would not make me lose sanity.  `innerself`
-clocks in at under 30 lines of code.  That's around 400 bytes minified, ~250
+clocks in at under 40 lines of code.  That's around 400 bytes minified, ~250
 gzipped.
 
 `innerself` is inspired by React and Redux.  It offers the following familiar
@@ -31,6 +31,7 @@ nor performance, and you probably won't notice their size footprint.
 
 `innerself` was a fun weekend project for me.  Let me know what you think!
 
+[Live demo]: https://stasm.github.io/innerself/example01/
 [1]: https://www.quirksmode.org/dom/innerhtml.html
 [2]: http://js13kgames.com/
 
@@ -38,6 +39,24 @@ nor performance, and you probably won't notice their size footprint.
 ## Install
 
     $ npm install innerself
+
+
+## Caveats
+
+You need to know a few things before you jump right in.  `innerself` is a poor
+choice for form-heavy UIs.  It tries to avoid unnecesary re-renders, but they
+still happen if the DOM needs even a tiniest update.  Your form elements will
+keep losing focus because every re-render is essentially a new assignment to
+the root element's `innerHTML`.
+
+When dealing with user input in serious scenarios, any use of `innerHTML`
+requires sanitization.  `innerself` doesn't do anything to protect you or your
+users from XSS attacks.  If you allow keyboard input or display data fetched
+from a database, please take special care to secure your app.  The
+`innerself/sanitize` module provides a rudimentary sanitization function.
+
+Perhaps the best use-case for `innerself` are simple mouse-only UIs with no
+keyboard input at all :)
 
 
 ## Usage
@@ -205,7 +224,8 @@ and then any other arguments passed explicitly by the parent.
 
 ## Crazy, huh?
 
-I know, I know.  But it works!  Check out the example in `example01`.
+I know, I know.  But it works!  Check out the example in `example01/` and at
+https://stasm.github.io/innerself/example01/.
 
 
 ## Logging Middleware

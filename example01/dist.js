@@ -11,30 +11,37 @@ function html([first, ...strings], ...values) {
 function create_store(reducer) {
     let state = reducer();
     const roots = new Map();
-
-    function dispatch(action, ...args) {
-        state = reducer(state, action, args);
-        render();
-    }
-
-    function connect(component) {
-        return function(...args) {
-            return component(state, ...args);
-        }
-    }
+    const prevs = new Map();
 
     function render() {
         for (const [root, component] of roots) {
-            root.innerHTML = component();
+            const output = component();
+
+            // Poor man's Virtual DOM implementation :)  Compare the new output
+            // with the last output for this root.  Don't trust the current
+            // value of root.innerHTML as it may have been changed by other
+            // scripts or extensions.
+            if (output !== prevs.get(root)) {
+                prevs.set(root, output);
+                root.innerHTML = output;
+            }
         }
     }
 
-    function attach(component, root) {
+    return {
+      attach(component, root) {
         roots.set(root, component);
         render();
-    }
-
-    return {attach, connect, dispatch};
+      },
+      connect(component) {
+          // Return a decorated component function.
+          return (...args) => component(state, ...args);
+      },
+      dispatch(action, ...args) {
+        state = reducer(state, action, args);
+        render();
+      },
+    };
 }
 
 function logger(reducer) {
@@ -49,7 +56,27 @@ function logger(reducer) {
     }
 }
 
+const TEMPLATE = document.createElement("template");
+const ENTITIES = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos",
+};
+
+function sanitize(value) {
+    // Parse the HTML to inert DOM.
+    TEMPLATE.innerHTML = value;
+    // Strip all markup.
+    const text = TEMPLATE.content.textContent;
+    // Any HTML entities present in the original value have been unescaped by
+    // textContent.  Replace the syntax-sensitive ones.
+    return text.replace(/[&<>"']/g, ch => ENTITIES[ch]);
+}
+
 const init = {
+    input_value: "",
     tasks: [],
     archive: []
 };
@@ -60,11 +87,17 @@ function merge(...objs) {
 
 function reducer(state = init, action, args) {
     switch (action) {
-        case "ADD_TASK": {
-            const {tasks} = state;
-            const [value] = args;
+        case "CHANGE_INPUT": {
+            const [input_value] = args;
             return merge(state, {
-                tasks: [...tasks, value],
+                input_value: sanitize(input_value)
+            });
+        }
+        case "ADD_TASK": {
+            const {tasks, input_value} = state;
+            return merge(state, {
+                tasks: [...tasks, input_value],
+                input_value: ""
             });
         }
         case "COMPLETE_TASK": {
@@ -101,18 +134,10 @@ function ActiveTask(text, index) {
 }
 
 function TaskInput() {
-    // XXX This is quite horrible.  We can't dispatch in onkeyup because the
-    // input would lose focus due to re-rendering.  And we can't dispatch in
-    // onchange/onblur because the most likely user action triggering those
-    // events is a click on the button, which would be re-rendered in that
-    // instant and not register a click.
-    const onclick = `
-        dispatch('ADD_TASK',
-            document.querySelector('input').value)
-    `;
     return html`
-        <input type="text" placeholder="Type here…">
-        <button onclick="${onclick}">Add</button>
+        <input type="text" placeholder="Type here…"
+            onchange="dispatch('CHANGE_INPUT', this.value)">
+        <button onclick="dispatch('ADD_TASK')">Add</button>
     `;
 }
 

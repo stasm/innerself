@@ -11,28 +11,35 @@ export default function html([first, ...strings], ...values) {
 export function create_store(reducer) {
     let state = reducer();
     const roots = new Map();
-
-    function dispatch(action, ...args) {
-        state = reducer(state, action, args);
-        render();
-    }
-
-    function connect(component) {
-        return function(...args) {
-            return component(state, ...args);
-        }
-    }
+    const prevs = new Map();
 
     function render() {
         for (const [root, component] of roots) {
-            root.innerHTML = component();
-        }
-    }
+            const output = component();
 
-    function attach(component, root) {
+            // Poor man's Virtual DOM implementation :)  Compare the new output
+            // with the last output for this root.  Don't trust the current
+            // value of root.innerHTML as it may have been changed by other
+            // scripts or extensions.
+            if (output !== prevs.get(root)) {
+                prevs.set(root, output);
+                root.innerHTML = output;
+            }
+        }
+    };
+
+    return {
+      attach(component, root) {
         roots.set(root, component);
         render();
-    }
-
-    return {attach, connect, dispatch};
+      },
+      connect(component) {
+          // Return a decorated component function.
+          return (...args) => component(state, ...args);
+      },
+      dispatch(action, ...args) {
+        state = reducer(state, action, args);
+        render();
+      },
+    };
 }
