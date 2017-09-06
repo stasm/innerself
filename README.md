@@ -1,6 +1,6 @@
 # innerself
 
-A tiny view + state management solution using innerHTML.
+A tiny view + state management solution using innerHTML.  [Live demo][].
 
 [innerHTML is fast][1].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
@@ -31,6 +31,7 @@ nor performance, and you probably won't notice their size footprint.
 
 `innerself` was a fun weekend project for me.  Let me know what you think!
 
+[Live demo]: https://stasm.github.io/innerself/example01/
 [1]: https://www.quirksmode.org/dom/innerhtml.html
 [2]: http://js13kgames.com/
 
@@ -222,7 +223,8 @@ and then any other arguments passed explicitly by the parent.
 
 ## Crazy, huh?
 
-I know, I know.  But it works!  Check out the example in `example01`.
+I know, I know.  But it works!  Check out the example in `example01/` and at
+https://stasm.github.io/innerself/example01/.
 
 
 ## Logging Middleware
