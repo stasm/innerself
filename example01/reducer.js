@@ -1,3 +1,5 @@
+import sanitize from "../sanitize";
+
 const init = {
     input_value: "",
     tasks: [],
@@ -13,7 +15,7 @@ export default function reducer(state = init, action, args) {
         case "CHANGE_INPUT": {
             const [input_value] = args;
             return merge(state, {
-                input_value
+                input_value: sanitize(input_value)
             });
         }
         case "ADD_TASK": {

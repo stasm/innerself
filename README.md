@@ -52,7 +52,8 @@ the root element's `innerHTML`.
 When dealing with user input in serious scenarios, any use of `innerHTML`
 requires sanitization.  `innerself` doesn't do anything to protect you or your
 users from XSS attacks.  If you allow keyboard input or display data fetched
-from a database, please take special care to secure your app.
+from a database, please take special care to secure your app.  The
+`innerself/sanitize` module provides a rudimentary sanitization function.
 
 Perhaps the best use-case for `innerself` are simple mouse-only UIs with no
 keyboard input at all :)
