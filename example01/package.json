@@ -1,6 +1,12 @@
 {
   "name": "example01",
   "private": true,
+  "scripts": {
+    "start": "npm run build",
+    "poststart": "serve .",
+    "build": "rollup index.js --output.format es --output.file dist.js",
+    "watch": "rollup index.js --watch --output.format es --output.file dist.js"
+  },
   "devDependencies": {
     "rollup": "^0.49.2",
     "serve": "^6.0.6"

@@ -4,4 +4,5 @@ A simple (and ulgy) Task Manager written using `innerself`.
 
 To install the dependencies and serve the example locally run:
 
-    $ make
+    $ npm install
+    $ npm start
