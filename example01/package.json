@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "npm run build",
-    "poststart": "./node_modules/serve/bin/serve.js .",
+    "poststart": "serve .",
     "build": "rollup index.js --output.format es --output.file dist.js",
     "watch": "rollup index.js --watch --output.format es --output.file dist.js"
   },
