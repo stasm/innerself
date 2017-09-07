@@ -8,7 +8,7 @@ export default function html([first, ...strings], ...values) {
     ).join("");
 }
 
-export function create_store(reducer) {
+export function createStore(reducer) {
     let state = reducer();
     const roots = new Map();
     const prevs = new Map();
