@@ -1,10 +1,10 @@
-import { create_store } from "../index";
+import {createStore} from "../index";
 import with_logger from "../logger";
 import reducer from "./reducer"
 
 
 const { attach, connect, dispatch } =
-    create_store(with_logger(reducer));
+    createStore(with_logger(reducer));
 
 window.dispatch = dispatch;
 

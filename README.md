@@ -80,10 +80,10 @@ export default function ActiveList(tasks) {
 ```
 
 The state of your app lives in a store, which you create by passing the reducer
-function to `create_store`:
+function to `createStore`:
 
 ```javascript
-const { attach, connect, dispatch } = create_store(reducer);
+const { attach, connect, dispatch } = createStore(reducer);
 window.dispatch = dispatch;
 export { attach, connect };
 ```
@@ -162,7 +162,7 @@ If you need side-effects, you have three choices:
 The `dispatch` function will also re-render the entire top-level component.  In
 order to be able to do so, it needs to know where in the DOM to put the
 `innerHTML` the top-level component generated.  This is what `attach` returned
-by `create_store` is for:
+by `createStore` is for:
 
 ```javascript
 import { attach } from "./store";
@@ -171,7 +171,7 @@ import App from "./App";
 attach(App, document.querySelector("#root"));
 ```
 
-`create_store` also returns a `connect` function.  Use it to avoid passing data
+`createStore` also returns a `connect` function.  Use it to avoid passing data
 from top-level components down to its children where it makes sense.  In the
 first snippet above, `ActiveList` receives a `tasks` argument which must be
 passed by the top-level component.
@@ -235,10 +235,10 @@ changes to the console.  To use it, simply decorate your reducer with the
 default export of the `innerself/logger` module:
 
 ```javascript
-import { create_store } from "innerself";
+import { createStore } from "innerself";
 import with_logger from "innerself/logger";
 import reducer from "./reducer"
 
 const { attach, connect, dispatch } =
-    create_store(with_logger(reducer));
+    createStore(with_logger(reducer));
 ```
