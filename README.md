@@ -236,9 +236,9 @@ default export of the `innerself/logger` module:
 
 ```javascript
 import { createStore } from "innerself";
-import with_logger from "innerself/logger";
+import withLogger from "innerself/logger";
 import reducer from "./reducer"
 
 const { attach, connect, dispatch } =
-    createStore(with_logger(reducer));
+    createStore(withLogger(reducer));
 ```
