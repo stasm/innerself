@@ -62,7 +62,7 @@ const ENTITIES = {
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
-    "'": "&apos",
+    "'": "&apos;",
 };
 
 function sanitize(value) {
@@ -71,7 +71,7 @@ function sanitize(value) {
     // Strip all markup.
     const text = TEMPLATE.content.textContent;
     // Any HTML entities present in the original value have been unescaped by
-    // textContent.  Replace the syntax-sensitive ones.
+    // textContent.  Sanitize the syntax-sensitive characters back to entities.
     return text.replace(/[&<>"']/g, ch => ENTITIES[ch]);
 }
 
@@ -81,21 +81,17 @@ const init = {
     archive: []
 };
 
-function merge(...objs) {
-    return Object.assign({}, ...objs);
-}
-
 function reducer(state = init, action, args) {
     switch (action) {
         case "CHANGE_INPUT": {
             const [input_value] = args;
-            return merge(state, {
+            return Object.assign({}, state, {
                 input_value: sanitize(input_value)
             });
         }
         case "ADD_TASK": {
             const {tasks, input_value} = state;
-            return merge(state, {
+            return Object.assign({}, state, {
                 tasks: [...tasks, input_value],
                 input_value: ""
             });
@@ -104,7 +100,7 @@ function reducer(state = init, action, args) {
             const {tasks, archive} = state;
             const [index] = args;
             const task = tasks[index];
-            return merge(state, {
+            return Object.assign({}, state, {
                 tasks: [
                     ...tasks.slice(0, index),
                     ...tasks.slice(index + 1)
@@ -125,7 +121,7 @@ window.dispatch = dispatch;
 function ActiveTask(text, index) {
     return html`
         <li>
-            ${text} ${index}
+            ${text}
             <button
                 onclick="dispatch('COMPLETE_TASK', ${index})">
                 Mark As Done</button>

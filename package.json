@@ -1,6 +1,6 @@
 {
   "name": "innerself",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tiny view + state management solution using innerHTML",
   "main": "index.js",
   "repository": {

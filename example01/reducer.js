@@ -6,21 +6,17 @@ const init = {
     archive: []
 };
 
-function merge(...objs) {
-    return Object.assign({}, ...objs);
-}
-
 export default function reducer(state = init, action, args) {
     switch (action) {
         case "CHANGE_INPUT": {
             const [input_value] = args;
-            return merge(state, {
+            return Object.assign({}, state, {
                 input_value: sanitize(input_value)
             });
         }
         case "ADD_TASK": {
             const {tasks, input_value} = state;
-            return merge(state, {
+            return Object.assign({}, state, {
                 tasks: [...tasks, input_value],
                 input_value: ""
             });
@@ -29,7 +25,7 @@ export default function reducer(state = init, action, args) {
             const {tasks, archive} = state;
             const [index] = args;
             const task = tasks[index];
-            return merge(state, {
+            return Object.assign({}, state, {
                 tasks: [
                     ...tasks.slice(0, index),
                     ...tasks.slice(index + 1)

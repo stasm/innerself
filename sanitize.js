@@ -4,7 +4,7 @@ const ENTITIES = {
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
-    "'": "&apos",
+    "'": "&apos;",
 };
 
 export default function sanitize(value) {
@@ -13,6 +13,6 @@ export default function sanitize(value) {
     // Strip all markup.
     const text = TEMPLATE.content.textContent;
     // Any HTML entities present in the original value have been unescaped by
-    // textContent.  Replace the syntax-sensitive ones.
+    // textContent.  Sanitize the syntax-sensitive characters back to entities.
     return text.replace(/[&<>"']/g, ch => ENTITIES[ch]);
 }
