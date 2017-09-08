@@ -29,17 +29,17 @@ export function createStore(reducer) {
     };
 
     return {
-      attach(component, root) {
-        roots.set(root, component);
-        render();
-      },
-      connect(component) {
-          // Return a decorated component function.
-          return (...args) => component(state, ...args);
-      },
-      dispatch(action, ...args) {
-        state = reducer(state, action, args);
-        render();
-      },
+        attach(component, root) {
+            roots.set(root, component);
+            render();
+        },
+        connect(component) {
+            // Return a decorated component function.
+            return (...args) => component(state, ...args);
+        },
+        dispatch(action, ...args) {
+            state = reducer(state, action, args);
+            render();
+        },
     };
 }
