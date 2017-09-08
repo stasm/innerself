@@ -1,0 +1,33 @@
+<!doctype html>
+<head>
+    <meta charset="utf8">
+    <title>innerself example 02</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box}
+
+        html, body, #app, #app > div {width: 100%; height: 100%}
+
+        body > h1 {position: absolute; top: 0; left: 0; width: 100%; text-align: center}
+
+        #app > button{
+            position: fixed;
+            bottom: 1rem;
+            left: 50%;
+            margin-left: -5rem;
+            width: 10rem;
+        }
+
+        #app .floating-box{
+            position: absolute;
+            width: 5rem;
+            height: 5em;
+        }
+
+    </style>
+    <script defer src="dist.js"></script>
+</head>
+<body>
+    <h1>innerself example 02</h1>
+    <div id="app"></div>
+</body>
+
