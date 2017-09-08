@@ -7,6 +7,10 @@ export default function Box(state, index) {
         <div 
             class="floating-box" 
                 onclick="dispatch('DESTROY_BOX', ${ index })"
-                style="background:${ bg }; top:${ top }px; left:${ left }px; transform: scale(${ scale })">This is box #${ index }</div>
+                style="
+                    background:${ bg };
+                    top:${ top }px;
+                    left:${ left }px;
+                    transform: scale(${ scale })">Box #${ index }</div>
     `;
 }
