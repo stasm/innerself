@@ -11,6 +11,15 @@
 
         body > h1 > span {font-size: .6em}
 
+        #app{
+            padding: 4rem;
+        }
+
+        #app > div{
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
 
         #app > button{
             position: fixed;
@@ -22,9 +31,11 @@
 
         #app .floating-box{
             position: absolute;
-            width: 5rem;
-            height: 5rem;
+            width: 12rem;
+            height: 12rem;
             cursor: pointer;
+            margin-left: -6rem;
+            margin-top: -6rem;
         }
 
         #app .floating-box > span{
@@ -32,6 +43,7 @@
             top: 50%;
             width: 100%;
             padding: 0 1em;
+            font-size: 2em;
             transform: translateY(-50%);
             text-align: center;
         }

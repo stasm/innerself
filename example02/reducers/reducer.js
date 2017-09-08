@@ -9,12 +9,13 @@ export default function reducer(state = init, action, args) {
     switch (action) {
         case "ADD_BOX": {
             const { boxes } = state;
+            const BoxContainer = document.querySelector('#app > div');
             return Object.assign({}, state, {
                 boxes: [...boxes, {
-                    top: floor(random() * document.body.clientHeight),
-                    left: floor(random() * document.body.clientWidth),
+                    top: floor(random() * BoxContainer.clientHeight),
+                    left: floor(random() * BoxContainer.clientWidth),
                     bg: `hsl(${ floor(random() * 360 )}, 70%, 70%)`,
-                    scale: .5 + random() * 1.5 // should add up to 2 at most (half at least)
+                    scale: .25 + random() * .75 // should add up to 1 at most (1/4 scale at least)
                 }]
             });
         }
