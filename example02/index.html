@@ -7,12 +7,12 @@
 
         html, body, #app, #app > div {width: 100%; height: 100%}
 
-        body > h1 {position: absolute; top: 1rem; left: 0; width: 100%; text-align: center}
+        body > header {position: absolute; top: 1rem; left: 0; width: 100%; text-align: center}
 
-        body > h1 > span {font-size: .6em}
+        body > header > span {display: inline-block; padding-top: .5rem}
 
         #app{
-            padding: 4rem;
+            padding: 6rem;
         }
 
         #app > div{
@@ -31,28 +31,24 @@
 
         #app .floating-box{
             position: absolute;
+            display: flex;
             width: 12rem;
             height: 12rem;
-            cursor: pointer;
-            margin-left: -6rem;
             margin-top: -6rem;
-        }
-
-        #app .floating-box > span{
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            padding: 0 1em;
-            font-size: 2em;
-            transform: translateY(-50%);
+            margin-left: -6rem;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            font-size: 2em;
         }
-
     </style>
     <script defer src="dist.js"></script>
 </head>
 <body>
-    <h1>innerself example 02<br><span>Click on a box to destroy it</span></h1>
+    <header>
+        <h1>innerself example 02</h1>
+        <span>Click on a box to destroy it</span>
+    </header>
     <div id="app"></div>
 </body>
 
