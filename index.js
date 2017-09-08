@@ -6,7 +6,7 @@ export default function html([first, ...strings], ...values) {
         (acc, cur) => acc.concat(cur, strings.shift()),
         [first]
     )
-    .filter(Boolean)
+    .filter(value => value !== null && value !== undefined)
     .join("");
 }
 
