@@ -1,2 +1,7 @@
 node_modules
+
+# @std/esm needs this
 .esm-cache
+
+# Examples build dist.js
+dist.js
