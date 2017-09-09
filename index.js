@@ -5,10 +5,15 @@ export default function html([first, ...strings], ...values) {
     return values.reduce(
         (acc, cur) => acc.concat(cur, strings.shift()),
         [first]
-    ).join("");
+    )
+
+    // Filter out interpolations which are null or undefined.  null is
+    // loosely-equal only to undefined and itself.
+    .filter(value => value != null)
+    .join("");
 }
 
-export function create_store(reducer) {
+export function createStore(reducer) {
     let state = reducer();
     const roots = new Map();
     const prevs = new Map();
@@ -29,17 +34,17 @@ export function create_store(reducer) {
     };
 
     return {
-      attach(component, root) {
-        roots.set(root, component);
-        render();
-      },
-      connect(component) {
-          // Return a decorated component function.
-          return (...args) => component(state, ...args);
-      },
-      dispatch(action, ...args) {
-        state = reducer(state, action, args);
-        render();
-      },
+        attach(component, root) {
+            roots.set(root, component);
+            render();
+        },
+        connect(component) {
+            // Return a decorated component function.
+            return (...args) => component(state, ...args);
+        },
+        dispatch(action, ...args) {
+            state = reducer(state, action, args);
+            render();
+        },
     };
 }

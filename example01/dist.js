@@ -8,7 +8,7 @@ function html([first, ...strings], ...values) {
     ).join("");
 }
 
-function create_store(reducer) {
+function createStore(reducer) {
     let state = reducer();
     const roots = new Map();
     const prevs = new Map();
@@ -29,18 +29,18 @@ function create_store(reducer) {
     }
 
     return {
-      attach(component, root) {
-        roots.set(root, component);
-        render();
-      },
-      connect(component) {
-          // Return a decorated component function.
-          return (...args) => component(state, ...args);
-      },
-      dispatch(action, ...args) {
-        state = reducer(state, action, args);
-        render();
-      },
+        attach(component, root) {
+            roots.set(root, component);
+            render();
+        },
+        connect(component) {
+            // Return a decorated component function.
+            return (...args) => component(state, ...args);
+        },
+        dispatch(action, ...args) {
+            state = reducer(state, action, args);
+            render();
+        },
     };
 }
 
@@ -114,7 +114,7 @@ function reducer(state = init, action, args) {
 }
 
 const { attach, connect, dispatch } =
-    create_store(logger(reducer));
+    createStore(logger(reducer));
 
 window.dispatch = dispatch;
 

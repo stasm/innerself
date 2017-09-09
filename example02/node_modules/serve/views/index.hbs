@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Files within {{directory}}</title>
+
+    <link rel="stylesheet" href="{{assetDir}}/styles.css">
+  </head>
+
+  <body>
+    <main>
+      <h1>
+        <i>Index of&nbsp;</i>
+
+        {{#each paths}}
+          <a href="/{{url}}">{{name}}</a>
+        {{/each}}
+      </h1>
+
+      <ul>
+        {{#each files}}
+          <li>
+            <a href="/{{relative}}" title="{{title}}" class="{{ext}}">{{base}}</a>
+            <i>{{size}}</i>
+          </li>
+        {{/each}}
+      </ul>
+    </main>
+  </body>
+</html>
