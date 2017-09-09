@@ -1,6 +1,7 @@
 # innerself
 
-A tiny view + state management solution using `innerHTML`.  [Live demo][].
+A tiny view + state management solution using `innerHTML`.  Live demos:
+[example01][], [example02][].
 
 [`innerHTML` is fast][1].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
@@ -245,8 +246,13 @@ const { attach, connect, dispatch } =
 
 ## Crazy, huh?
 
-I know, I know.  But it works!  Check out the source in `example01/` and at
-https://stasm.github.io/innerself/example01/.
+I know, I know.  But it works!  Check out the examples:
+
+  - [example01][] - an obligatory Todo App.
+  - [example02][] by @flynnham.
+
+[example01]: https://stasm.github.io/innerself/example01/
+[example02]: https://stasm.github.io/innerself/example02/
 
 
 ## How It Works
