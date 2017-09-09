@@ -13,13 +13,14 @@
     "url": "https://github.com/stasm/innerself/issues"
   },
   "scripts": {
-    "test": "mocha -u tdd",
+    "test": "mocha --ui tdd --require ./test/__setup",
     "deploy": "gh-pages -d ."
   },
   "homepage": "https://github.com/stasm/innerself#readme",
   "devDependencies": {
     "@std/esm": "^0.8.2",
     "gh-pages": "^1.0.0",
+    "jsdom": "^11.2.0",
     "mocha": "^3.5.0"
   }
 }
