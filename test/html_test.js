@@ -1,7 +1,7 @@
 require = require("@std/esm")(module, {esm: "js"});
 
 const assert = require("assert");
-const { default: html, createStore } = require("./index")
+const { default: html } = require("../index")
 
 suite("The html helper", function() {
     test("is default export", function() {
