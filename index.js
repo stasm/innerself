@@ -6,7 +6,10 @@ export default function html([first, ...strings], ...values) {
         (acc, cur) => acc.concat(cur, strings.shift()),
         [first]
     )
-    .filter(value => value !== null && value !== undefined)
+
+    // Filter out interpolations which are null or undefined.  null is
+    // loosely-equal only to undefined and itself.
+    .filter(value => value != null)
     .join("");
 }
 
