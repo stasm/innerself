@@ -19,6 +19,7 @@ export function createStore(reducer) {
     const prevs = new Map();
 
     function render() {
+        const id = focused();
         for (const [root, component] of roots) {
             const output = component();
 
@@ -31,6 +32,7 @@ export function createStore(reducer) {
                 root.innerHTML = output;
             }
         }
+        focus(id);
     };
 
     return {
@@ -47,4 +49,17 @@ export function createStore(reducer) {
             render();
         },
     };
+}
+
+
+const DOCUMENT_EXISTS = typeof document !== 'undefined';
+
+function focused() {
+    const active = DOCUMENT_EXISTS && document.activeElement;
+    return active && active.id;
+}
+
+function focus(id) {
+    const element = DOCUMENT_EXISTS && document.getElementById(id);
+    element && element.focus();
 }
