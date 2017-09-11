@@ -250,9 +250,12 @@ I know, I know.  But it works!  Check out the examples:
 
   - [example01][] - an obligatory Todo App.
   - [example02][] by @flynnham.
+  - [example03][] illustrates limitations of _innerself_ when dealing with text
+    inputs and how to work around them.
 
 [example01]: https://stasm.github.io/innerself/example01/
 [example02]: https://stasm.github.io/innerself/example02/
+[example03]: https://stasm.github.io/innerself/example03/
 
 
 ## How It Works
