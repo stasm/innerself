@@ -12,18 +12,6 @@ function counter(state = 0, action) {
     }
 }
 
-function spy(orig = x => void x) {
-    let _args = [];
-
-    function fake(...args) {
-        _args = args;
-        return orig(...args);
-    }
-
-    fake.args = () => _args;
-    return fake;
-}
-
 suite("connect", function() {
     let store;
     let root;
@@ -36,7 +24,7 @@ suite("connect", function() {
     test("passes the current state as the first argument", function() {
         const { attach, connect, dispatch } = store;
 
-        const TestApp = spy();
+        const TestApp = spyFunction();
         const ConnectedTestApp = connect(TestApp);
         attach(ConnectedTestApp, root);
         dispatch("INCREMENT");
@@ -47,7 +35,7 @@ suite("connect", function() {
     test("passes other args after the state", function() {
         const { attach, connect, dispatch } = store;
 
-        const TestComponent = spy();
+        const TestComponent = spyFunction();
         const ConnectedTestComponent = connect(TestComponent);
 
         function TestApp() {
