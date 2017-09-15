@@ -3,12 +3,12 @@
 A tiny view + state management solution using `innerHTML`.  Live demos:
 [example01][], [example02][].
 
-[`innerHTML` is fast][1].  It's not fast enough if you're a Fortune 500 company
+[`innerHTML` is fast][quirksmode].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
 just fast enough for you if you care about code size.
 
 I wrote _innerself_ because I needed to make sense of the UI for a game I wrote
-for the [js13kGames][2] jam.  The whole game had to fit into 13KB.  I needed
+for the [js13kGames][] jam.  The whole game had to fit into 13KB.  I needed
 something extremely small which would not make me lose sanity.  _innerself_
 clocks in at under 50 lines of code.  That's around 600 bytes minified, ~350
 gzipped.
@@ -36,8 +36,8 @@ footprint.
 _innerself_ was a fun weekend project for me.  Let me know what you think!
 
 [Live demo]: https://stasm.github.io/innerself/example01/
-[1]: https://www.quirksmode.org/dom/innerhtml.html
-[2]: http://js13kgames.com/
+[quirksmode]: https://www.quirksmode.org/dom/innerhtml.html
+[js13kGames]: http://js13kgames.com/
 
 
 ## Install
@@ -115,11 +115,11 @@ export default function ActiveTask(text, index) {
 ```
 
 You can put any JavaScript into the `on<event>` attributes. [The browser will
-wrap it in a function][3] which takes the `event` as the first argument (in
-most cases) and in which `this` refers to the DOM Element on which the event
-has been registered.
+wrap it in a function][mdn-event] which takes the `event` as the first argument
+(in most cases) and in which `this` refers to the DOM Element on which the
+event has been registered.
 
-[3]:https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers#Event_handler's_parameters_this_binding_and_the_return_value
+[mdn-event]: https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers#Event_handler's_parameters_this_binding_and_the_return_value
 
 The `dispatch` function takes an action name and a variable number of
 arguments.  They are passed to the reducer which should return a new version of
