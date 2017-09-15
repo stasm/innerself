@@ -70,7 +70,7 @@ keyboard input at all :)
   - [A moment lost in time.][moment-lost] - a first-person exploration puzzle
     game by [@michalbe][] and myself.  I originally wrote _innerself_ for this.
   - [Innerself Hacker News Clone][innerself-hn] - a Hacker News single page app by [@bsouthga][] with
-   innerself as the only dependency. Also serves as an example of a [TypeScript][typescript] innerself app.
+   _innerself_ as the only dependency. Also serves as an example of a [TypeScript][typescript] _innerself_ app.
 
 
 [moment-lost]: https://github.com/piesku/moment-lost
