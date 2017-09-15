@@ -1,5 +1,5 @@
 /**
- * create html markdown
+ * html string helper function, flattens array values
  */
 declare function html(
   components: TemplateStringsArray,
