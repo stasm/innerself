@@ -65,6 +65,16 @@ Perhaps the best use-case for _innerself_ are simple mouse-only UIs with no
 keyboard input at all :)
 
 
+## Showcase
+
+  - [A moment lost in time.][moment-lost] - a first-person exploration puzzle
+    game by [@michalbe][] and myself.  I originally wrote _innerself_ for this.
+
+
+[moment-lost]: https://github.com/piesku/moment-lost
+[@michalbe]: https://github.com/michalbe
+
+
 ## Usage
 
 _innerself_ expects you to build a serialized version of your DOM which will
