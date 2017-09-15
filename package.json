@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "A tiny view + state management solution using innerHTML",
   "main": "index.js",
+  "typings": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stasm/innerself.git"
