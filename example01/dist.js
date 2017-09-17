@@ -28,7 +28,14 @@ function createStore(reducer) {
             // scripts or extensions.
             if (output !== prevs.get(root)) {
                 prevs.set(root, output);
-                morphdom(root, output);
+                root.innerHTML = output;
+
+                // Dispatch an event on the root to give developers a chance to
+                // do some housekeeping after the whole DOM is replaced under
+                // the root. You can re-focus elements in the listener to this
+                // event. See example03.
+                const event = new CustomEvent("render", { detail: state });
+                root.dispatchEvent(event);
             }
         }
     }
