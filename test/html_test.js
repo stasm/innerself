@@ -3,8 +3,8 @@ require = require("@std/esm")(module, {esm: "js"});
 const assert = require("assert");
 const { default: html } = require("../index")
 
-suite("The html helper", function() {
-    test("is default export", function() {
+suite("html", function() {
+    test("default export", function() {
         assert.equal(typeof html, "function");
     });
 

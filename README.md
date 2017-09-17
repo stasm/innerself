@@ -3,12 +3,12 @@
 A tiny view + state management solution using `innerHTML`.  Live demos:
 [example01][], [example02][].
 
-[`innerHTML` is fast][1].  It's not fast enough if you're a Fortune 500 company
+[`innerHTML` is fast][quirksmode].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
 just fast enough for you if you care about code size.
 
 I wrote _innerself_ because I needed to make sense of the UI for a game I wrote
-for the [js13kGames][2] jam.  The whole game had to fit into 13KB.  I needed
+for the [js13kGames][] jam.  The whole game had to fit into 13KB.  I needed
 something extremely small which would not make me lose sanity.  _innerself_
 clocks in at under 50 lines of code.  That's around 600 bytes minified, ~350
 gzipped.
@@ -36,8 +36,8 @@ footprint.
 _innerself_ was a fun weekend project for me.  Let me know what you think!
 
 [Live demo]: https://stasm.github.io/innerself/example01/
-[1]: https://www.quirksmode.org/dom/innerhtml.html
-[2]: http://js13kgames.com/
+[quirksmode]: https://www.quirksmode.org/dom/innerhtml.html
+[js13kGames]: http://js13kgames.com/
 
 
 ## Install
@@ -63,6 +63,21 @@ from a database, please take special care to secure your app.  The
 
 Perhaps the best use-case for _innerself_ are simple mouse-only UIs with no
 keyboard input at all :)
+
+
+## Showcase
+
+  - [A moment lost in time.][moment-lost] - a first-person exploration puzzle
+    game by [@michalbe][] and myself.  I originally wrote _innerself_ for this.
+  - [Innerself Hacker News Clone][innerself-hn] - a Hacker News single page app by [@bsouthga][] with
+   _innerself_ as the only dependency. Also serves as an example of a [TypeScript][typescript] _innerself_ app.
+
+
+[moment-lost]: https://github.com/piesku/moment-lost
+[@michalbe]: https://github.com/michalbe
+[innerself-hn]: https://github.com/bsouthga/innerself-hn
+[@bsouthga]: https://github.com/bsouthga
+[typescript]: https://github.com/Microsoft/TypeScript
 
 
 ## Usage
@@ -115,11 +130,11 @@ export default function ActiveTask(text, index) {
 ```
 
 You can put any JavaScript into the `on<event>` attributes. [The browser will
-wrap it in a function][3] which takes the `event` as the first argument (in
-most cases) and in which `this` refers to the DOM Element on which the event
-has been registered.
+wrap it in a function][mdn-event] which takes the `event` as the first argument
+(in most cases) and in which `this` refers to the DOM Element on which the
+event has been registered.
 
-[3]:https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers#Event_handler's_parameters_this_binding_and_the_return_value
+[mdn-event]: https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers#Event_handler's_parameters_this_binding_and_the_return_value
 
 The `dispatch` function takes an action name and a variable number of
 arguments.  They are passed to the reducer which should return a new version of
@@ -250,9 +265,12 @@ I know, I know.  But it works!  Check out the examples:
 
   - [example01][] - an obligatory Todo App.
   - [example02][] by @flynnham.
+  - [example03][] illustrates limitations of _innerself_ when dealing with text
+    inputs and how to work around them.
 
 [example01]: https://stasm.github.io/innerself/example01/
 [example02]: https://stasm.github.io/innerself/example02/
+[example03]: https://stasm.github.io/innerself/example03/
 
 
 ## How It Works

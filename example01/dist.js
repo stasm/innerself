@@ -5,7 +5,12 @@ function html([first, ...strings], ...values) {
     return values.reduce(
         (acc, cur) => acc.concat(cur, strings.shift()),
         [first]
-    ).join("");
+    )
+
+    // Filter out interpolations which are null or undefined.  null is
+    // loosely-equal only to undefined and itself.
+    .filter(value => value != null)
+    .join("");
 }
 
 function createStore(reducer) {
@@ -23,7 +28,7 @@ function createStore(reducer) {
             // scripts or extensions.
             if (output !== prevs.get(root)) {
                 prevs.set(root, output);
-                root.innerHTML = output;
+                morphdom(root, output);
             }
         }
     }
