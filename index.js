@@ -7,9 +7,8 @@ export default function html([first, ...strings], ...values) {
         [first]
     )
 
-    // Filter out interpolations which are null or undefined.  null is
-    // loosely-equal only to undefined and itself.
-    .filter(value => value != null)
+    // Filter out interpolations which are bools, null or undefined.
+    .filter(x => x && x !== true || x === 0)
     .join("");
 }
 
