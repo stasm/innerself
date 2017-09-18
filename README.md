@@ -1,6 +1,6 @@
 <div align="center">
   <a href="#">
-    <img width=320" height="320" src="https://raw.githubusercontent.com/stasm/innerself/master/src/logo/logo.png" />
+    <img width="192" height="192" src="https://raw.githubusercontent.com/stasm/innerself/master/src/logo/logo.png" />
   </a>
   <h1>innerself</h1>
   <p>A tiny view + state management solution using <code>innerHTML</code></p>
