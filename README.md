@@ -1,7 +1,12 @@
-# innerself
+<div align="center">
+  <a href="#">
+    <img width=320" height="320" src="https://raw.githubusercontent.com/stasm/innerself/master/src/logo/logo.png" />
+  </a>
+  <h1>innerself</h1>
+  <p>A tiny view + state management solution using <code>innerHTML</code></p>
+</div>
 
-A tiny view + state management solution using `innerHTML`.  Live demos:
-[example01][], [example02][].
+Live demos: [example01][], [example02][].
 
 [`innerHTML` is fast][quirksmode].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
