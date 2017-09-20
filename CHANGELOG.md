@@ -39,6 +39,17 @@
 
         html`${items.length > 0 && ItemList()}`
 
+  - Add an optional `combineReducers` module.
+
+    The `combineReducers` function can be used to hand off state changes to
+    smaller reducers.  Each reducer takes care of one sub-tree of the state and
+    doesn't have access to the other parts.
+
+    `combineReducers` takes an object of `{name: reducer}` as the only
+    argument. The keys of the object will be used as top-level names in the
+    resulting state tree and the values will be set to the return values of
+    each of the reducers.
+
 
 ## 0.1.1 (September 12, 2017)
 
