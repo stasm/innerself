@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+  - `connect` now takes a selector as an optional second argument.
+
+    You can now pass an optional selector function to `connect`.  It will be
+    passed the `state` and should return whatever the connected component
+    expects as the first argument.
+
+        connect(FooComponent, state => state.foo);
+
   - Filter out booleans in the html helper.
 
     Previously only `null` and `undefined` were filtered out. Now both `true`
