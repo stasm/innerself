@@ -2,11 +2,20 @@
 
 ## Unreleased
 
+  - Encourage passing the `props` object as the first argument to components.
+
+    Components are just functions so this isn't mandatory and you can still
+    define arguments as you see fit.  The pattern of passing `props` makes
+    composition easier, encourages code which is more readable and decouples
+    the implementation of the component from the action of connecting it to the
+    store.  From now on, connecting will only work for components with zero
+    arity or which take an object as the first argument.
+
   - `connect` now takes a selector as an optional second argument.
 
     You can now pass an optional selector function to `connect`.  It will be
-    passed the `state` and should return whatever the connected component
-    expects as the first argument.
+    passed the `state` and should return an object which will be merged with
+    the component's `props` using `Object.assign({}, props, substate)`.
 
         connect(FooComponent, state => state.foo);
 

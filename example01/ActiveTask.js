@@ -1,9 +1,9 @@
 import html from "../index";
 
-export default function ActiveTask(text, index) {
+export default function ActiveTask({task, index}) {
     return html`
         <li>
-            ${text}
+            ${task}
             <button
                 onclick="dispatch('COMPLETE_TASK', ${index})">
                 Mark As Done</button>

@@ -46,7 +46,8 @@ export function createStore(reducer) {
         },
         connect(component, selector = state => state) {
             // Return a decorated component function.
-            return (...args) => component(selector(state), ...args);
+            return (props, ...args) =>
+                component(Object.assign({}, props, selector(state)), ...args);
         },
         dispatch(action, ...args) {
             state = reducer(state, action, args);
