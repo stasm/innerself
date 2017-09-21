@@ -77,6 +77,7 @@ keyboard input at all :)
   - [Innerself Hacker News Clone][innerself-hn] - a Hacker News single page app by [@bsouthga][] with
    _innerself_ as the only dependency. Also serves as an example of a [TypeScript][typescript] _innerself_ app.
   - [Reach/Steal Draft Tracker][reach-steal] - a fantasy football draft tracker by [@bcruddy][] that tests the rendering performance with 300+ table rows backed by an [expressjs][] server.
+  - [TodoMVC][todomvc-innerself] - a [TodoMVC][todomvc] app based on _innerself_ by [@Cweili][@cweili].
 
 
 [moment-lost]: https://github.com/piesku/moment-lost
@@ -87,6 +88,9 @@ keyboard input at all :)
 [reach-steal]: https://github.com/bcruddy/reach-steal
 [@bcruddy]: https://github.com/bcruddy
 [expressjs]: https://github.com/expressjs/express
+[todomvc-innerself]: https://codepen.io/Cweili/pen/ZXOeQa
+[todomvc]: http://todomvc.com/
+[@cweili]: https://github.com/Cweili
 
 
 ## Usage
