@@ -76,6 +76,7 @@ keyboard input at all :)
     game by [@michalbe][] and myself.  I originally wrote _innerself_ for this.
   - [Innerself Hacker News Clone][innerself-hn] - a Hacker News single page app by [@bsouthga][] with
    _innerself_ as the only dependency. Also serves as an example of a [TypeScript][typescript] _innerself_ app.
+  - [Reach/Steal Draft Tracker][reach-steal] - a fantasy football draft tracker by [@bcruddy][] that tests the rendering performance with 300+ table rows backed by an [expressjs][] server.
 
 
 [moment-lost]: https://github.com/piesku/moment-lost
@@ -83,6 +84,9 @@ keyboard input at all :)
 [innerself-hn]: https://github.com/bsouthga/innerself-hn
 [@bsouthga]: https://github.com/bsouthga
 [typescript]: https://github.com/Microsoft/TypeScript
+[reach-steal]: https://github.com/bcruddy/reach-steal
+[@bcruddy]: https://github.com/bcruddy
+[expressjs]: https://github.com/expressjs/express
 
 
 ## Usage
