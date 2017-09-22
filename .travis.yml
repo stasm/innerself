@@ -1,0 +1,5 @@
+dist: trusty
+language: node_js
+node_js: 8.5.0
+notifications:
+  email: false
