@@ -3,10 +3,13 @@
     <img width="192" height="192" src="https://raw.githubusercontent.com/stasm/innerself/master/logo/logo.png" />
   </a>
   <h1>innerself</h1>
-  <p>A tiny view + state management solution using <code>innerHTML</code></p>
+  <p>
+    A tiny view + state management solution using <code>innerHTML</code>.
+    <a href="https://travis-ci.org/stasm/innerself">
+      <img alt="Build Status" src="https://travis-ci.org/stasm/innerself.svg?branch=master" />
+    </a>
+  </p>
 </div>
-
-Live demos: [example01][], [example02][].
 
 [`innerHTML` is fast][quirksmode].  It's not fast enough if you're a Fortune 500 company
 or even if your app has more than just a handful of views.  But it might be
@@ -43,11 +46,6 @@ _innerself_ was a fun weekend project for me.  Let me know what you think!
 [Live demo]: https://stasm.github.io/innerself/example01/
 [quirksmode]: https://www.quirksmode.org/dom/innerhtml.html
 [js13kGames]: http://js13kgames.com/
-
-
-## Install
-
-    $ npm install innerself
 
 
 ## Caveats
@@ -91,6 +89,11 @@ keyboard input at all :)
 [todomvc-innerself]: https://codepen.io/Cweili/pen/ZXOeQa
 [todomvc]: http://todomvc.com/
 [@cweili]: https://github.com/Cweili
+
+
+## Install
+
+    $ npm install innerself
 
 
 ## Usage
