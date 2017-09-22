@@ -95,6 +95,11 @@ keyboard input at all :)
 
     $ npm install innerself
 
+For a more structured approach [@bsouthga][] created [innerself-app][]. Use it
+to bootstrap new _innerself_ apps from a predefined template.
+
+[innerself-app]: https://github.com/bsouthga/innerself-app
+
 
 ## Usage
 
