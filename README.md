@@ -4,11 +4,11 @@
   </a>
   <h1>innerself</h1>
   <p>
-    A tiny view + state management solution using <code>innerHTML</code>.
     <a href="https://travis-ci.org/stasm/innerself">
       <img alt="Build Status" src="https://travis-ci.org/stasm/innerself.svg?branch=master" />
     </a>
   </p>
+  <p>A tiny view + state management solution using <code>innerHTML</code>.</p>
 </div>
 
 [`innerHTML` is fast][quirksmode].  It's not fast enough if you're a Fortune 500 company
