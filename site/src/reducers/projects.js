@@ -1,5 +1,5 @@
-const project = (title, desc, authors, repo, demo, buttonClass, customSource) => { return { title, desc, authors, repo, demo, buttonClass, customSource } };
-const author = (name, link) => { return { name, link } };
+const project = (title, desc, authors, repo, demo, buttonClass, customSource) => ({ title, desc, authors, repo, demo, buttonClass, customSource });
+const author = (name, link) => ({ name, link });
 
 // storage for common authors
 const $ = {
