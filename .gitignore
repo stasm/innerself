@@ -2,7 +2,5 @@ node_module/
 
 site/node_modules/
 site/package-lock.json
-site/styles.min.css
-site/dist*
 
 .log
