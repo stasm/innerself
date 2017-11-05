@@ -1,9 +1,9 @@
 
-@OpaqueWhiteMore: rgba(255,255,255,.9);
-@OpaqueWhite: rgba(255,255,255,.8);
+@OpaqueWhiteMore: rgba(255,255,255,.95);
+@OpaqueWhite: rgba(255,255,255,.88);
 @OpaqueDarkFeint: rgba(0,0,0,.05);
-@OpaqueDark: rgba(0,0,0,.4);
-@OpaqueDarkMore: rgba(0,0,0,.8);
+@OpaqueDark: rgba(0,0,0,.6);
+@OpaqueDarkMore: rgba(0,0,0,.88);
 @BoxPadding: 1.35rem;
 @ContainerMaxWidth: 64rem;
 @MobileLayoutWidth: 980px;
@@ -121,6 +121,10 @@ body > header{
 				color: inherit;
 				padding: @BoxPadding (@BoxPadding * 0.75);
 			}
+
+			&:last-of-type{
+				margin-right: @BoxPadding * 0.75;
+			}
 		}
 	}
 	.container{
@@ -166,7 +170,9 @@ a{
 			padding: 15vh 0;
 		}
 
-		.animation-control{
+		&::after{
+			content: "\0020";
+			display: block;
 			background-color: @OpaqueWhiteMore;
 
 			.container;
@@ -187,7 +193,7 @@ a{
 			}
 		}
 
-		&.transparent-bar .animation-control{
+		&.transparent-bar::after{
 			background-color: transparent;
 
 			span {
@@ -247,12 +253,13 @@ a{
 
 	.button{
 		@DecoratorSize: .75em;
+		@BorderWidth: 2px;
 
 		position: relative;
 		display: inline-block;
 		border: solid 2px @OpaqueDarkMore;
 		line-height: 1;
-		padding: (@BoxPadding * .5) @BoxPadding;
+		padding: (@BoxPadding / 2) @BoxPadding;
 		background-color: @OpaqueWhite;
 		text-align: center;
 		text-transform: uppercase;
@@ -285,13 +292,15 @@ a{
 			}
 		}
 
+		@_DecoratorOffset: -@DecoratorSize / 2;
+
 		&::before, &::after{
 			content: "\0020";
 			display: block;
 			position: absolute;
 			top: 50%;
 			width: @DecoratorSize; height: @DecoratorSize;
-			margin-top: -(@DecoratorSize / 2);
+			margin-top: @_DecoratorOffset;
 			overflow: visible;
 			background-color: #111;
 			border-radius: 50%;
@@ -300,8 +309,16 @@ a{
 
 		}
 
-		&::before {left: -(@DecoratorSize / 2)}
-		&::after {right: -(@DecoratorSize / 2)}
+		@_DecoratorBOffset: -@BorderWidth / 2;
+
+		&::before {
+			left: @_DecoratorOffset;
+			margin-left: @_DecoratorBOffset;
+		}
+		&::after {
+			right: @_DecoratorOffset;
+			margin-right: @_DecoratorBOffset;
+		}
 
 		&:hover{
 			&::before, &::after{

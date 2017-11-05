@@ -317,7 +317,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n\t\t<div class="jumbo', '">\n\t\t\t<h2>', '</h2>\n\t\t\t', '\n\t\t</div>\n\t'], ['\n\t\t<div class="jumbo', '">\n\t\t\t<h2>', '</h2>\n\t\t\t', '\n\t\t</div>\n\t']);
+var _templateObject = _taggedTemplateLiteral(['\n\t\t<div class="jumbo', '">\n\t\t\t<h2>', '</h2>\n\t\t</div>\n\t'], ['\n\t\t<div class="jumbo', '">\n\t\t\t<h2>', '</h2>\n\t\t</div>\n\t']);
 
 exports.default = Jumbo;
 
@@ -336,7 +336,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 function Jumbo(content) {
 	var transparentControl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-	return (0, _index2.default)(_templateObject, transparentControl ? ' transparent-bar' : '', content, (0, _animationControl2.default)());
+	return (0, _index2.default)(_templateObject, transparentControl ? ' transparent-bar' : '', content);
 }
 
 /***/ }),

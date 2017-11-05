@@ -9,7 +9,7 @@
     "poststart": "serve .",
     "build:bundle": "webpack",
     "build:minify": "uglifyjs --compress --mangle -- dist.js > dist.min.js",
-    "build:less": "lessc ./src/styles.less ./styles.css",
+    "build:less": "lessc --clean-css ./src/styles.less ./styles.min.css",
     "build": "npm run build:bundle && npm run build:minify && npm run build:less"
   },
   "author": "Flynn Buckingham",
@@ -19,6 +19,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "less": "^2.7.2",
+    "less-plugin-clean-css": "^1.5.1",
     "mini-bokeh": "git://github.com/flynnham/mini-bokeh.git",
     "serve": "^6.2.0",
     "uglify-js": "^3.1.3",
