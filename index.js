@@ -4,12 +4,11 @@ export default function html([first, ...strings], ...values) {
     // because concat will spread them flat for us.
     return values.reduce(
         (acc, cur) => acc.concat(cur, strings.shift()),
-        [first]
-    )
+        [first])
 
-    // Filter out interpolations which are bools, null or undefined.
-    .filter(x => x && x !== true || x === 0)
-    .join("");
+        // Filter out interpolations which are bools, null or undefined.
+        .filter(x => x && x !== true || x === 0)
+        .join("");
 }
 
 export function createStore(reducer) {
@@ -26,15 +25,14 @@ export function createStore(reducer) {
             // value of root.innerHTML as it may have been changed by other
             // scripts or extensions.
             if (output !== prevs.get(root)) {
-                prevs.set(root, output);
-                root.innerHTML = output;
+                prevs.set(root, root.innerHTML = output);
 
                 // Dispatch an event on the root to give developers a chance to
                 // do some housekeeping after the whole DOM is replaced under
                 // the root. You can re-focus elements in the listener to this
                 // event. See example03.
-                const event = new CustomEvent("render", { detail: state });
-                root.dispatchEvent(event);
+                root.dispatchEvent(
+                    new CustomEvent("render", {detail: state}));
             }
         }
     };
