@@ -1,5 +1,4 @@
-require = require("@std/esm")(module, {esm: "js"});
-
+require = require("esm")(module);
 const assert = require("assert");
 const { createStore } = require("../index")
 

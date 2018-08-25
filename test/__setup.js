@@ -1,16 +1,14 @@
 const { JSDOM } = require("jsdom");
 
-const { window } = new JSDOM("");
+const { window } = new JSDOM("", {
+    url: "http://localhost",
+});
 Object.keys(window).forEach(property => {
     if (typeof global[property] === "undefined") {
         global[property] = window[property];
     }
 });
 global.window = window;
-global.navigator = {
-    userAgent: "node.js"
-};
-
 global.CustomEvent = function CustomEvent(name, {detail}) {
     this.name = name;
     this.detail = detail;
