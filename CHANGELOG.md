@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+  - Encourage passing the `props` object as the first argument to components.
+
+    Components are just functions so this isn't mandatory and you can still
+    define arguments as you see fit.  The pattern of passing `props` makes
+    composition easier, encourages code which is more readable and decouples
+    the implementation of the component from the action of connecting it to the
+    store.  From now on, connecting will only work for components with zero
+    arity or which take an object as the first argument.
+
+  - `connect` now takes a selector as an optional second argument.
+
+    You can now pass an optional selector function to `connect`.  It will be
+    passed the `state` and should return an object which will be merged with
+    the component's `props` using `Object.assign({}, props, substate)`.
+
+        connect(FooComponent, state => state.foo);
+
   - Filter out booleans in the html helper.
 
     Previously only `null` and `undefined` were filtered out. Now both `true`
@@ -21,6 +38,17 @@
     which arguably also reads better:
 
         html`${items.length > 0 && ItemList()}`
+
+  - Add an optional `combineReducers` module.
+
+    The `combineReducers` function can be used to hand off state changes to
+    smaller reducers.  Each reducer takes care of one sub-tree of the state and
+    doesn't have access to the other parts.
+
+    `combineReducers` takes an object of `{name: reducer}` as the only
+    argument. The keys of the object will be used as top-level names in the
+    resulting state tree and the values will be set to the return values of
+    each of the reducers.
 
 
 ## 0.1.1 (September 12, 2017)

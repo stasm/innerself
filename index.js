@@ -42,9 +42,10 @@ export function createStore(reducer) {
             roots.set(root, component);
             render();
         },
-        connect(component) {
+        connect(component, selector = state => state) {
             // Return a decorated component function.
-            return (...args) => component(state, ...args);
+            return (props, ...args) =>
+                component(Object.assign({}, props, selector(state)), ...args);
         },
         dispatch(action, ...args) {
             state = reducer(state, action, args);
