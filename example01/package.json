@@ -2,13 +2,10 @@
   "name": "example01",
   "private": true,
   "scripts": {
-    "start": "npm run build",
-    "poststart": "serve .",
-    "build": "rollup index.js --output.format es --output.file dist.js",
-    "watch": "rollup index.js --watch --output.format es --output.file dist.js"
+    "start": "parcel serve index.html",
+    "build": "parcel build index.html"
   },
   "devDependencies": {
-    "rollup": "^0.64.1",
-    "serve": "^10.0.0"
+    "parcel-bundler": "^1.9.7"
   }
 }
